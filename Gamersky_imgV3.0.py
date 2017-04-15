@@ -26,7 +26,7 @@ def download_img(imgurl):
         #proxies = get_proxies()
         try:
             r = requests.get(img, headers=headers, timeout=10)#, proxies=proxies)
-            fname = str(n[1])+'_'+str(n[2])+'_'+str(page)+str(x)+'.jpg'
+            fname = str(n[1])+'_'+str(n[2])+'_'+str(page)+str(x)+img_code+'.jpg'
             print("Downloading No.%s page No.%d picture...")% (page, x)
             x += 1
             with open(fname, 'wb') as f:
@@ -73,6 +73,7 @@ def get_img_url():#获取首页上最新囧图的网址
 if __name__ == '__main__':
     n = time.localtime()
     url = get_img_url()#获取最新囧图网址
+    img_code = url[35:41:]
 
     if url:
         page = 1
